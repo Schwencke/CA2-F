@@ -16,7 +16,7 @@ export default function LogIn({ login }) {
         <h2>Login</h2>
         <form onChange={onChange} >
           <input placeholder="User Name" id="username" />
-          <input placeholder="Password" id="password" />
+          <input type="password" placeholder="Password" id="password" />
           <button onClick={performLogin}>Login</button>
         </form>
       </div>
