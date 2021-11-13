@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import ValutaCalc from "./ValutaCalc"
 
 
 const Valuta = ({facade}) => {
@@ -15,25 +16,17 @@ const Valuta = ({facade}) => {
           facade.fetchData('valuta/latest/DKK',getValutas);
         },[])
 
-
-        // var row = allSymbols.map(function(item){
-        //     if(allValutas.map((val)=>(val.code)) === item.code){
-        //         return <tr key={item.code}> <td>{item.name}</td></tr>
-        //     }
-        // })
-
         let mergedValutas = allValutas.map(val => {
             let symbols = allSymbols.find(item => item.code === val.code)
             return {...val, ...symbols}
         })
 
-        
+        let val1 = {code: 'DKK'}
+        let val2 = {code: 'USD'}
 
     return (
         <div>
-           
-
-        
+            <ValutaCalc selcValuta1={val1} selcValuta2={val2}/>
             {mergedValutas.map((item) => (
             <tr key={item.code}>
             <td>{item.description}</td> <td>{Math.round((item.value + Number.EPSILON)*100) /100}</td>
