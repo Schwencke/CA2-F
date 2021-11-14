@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react"
+import SearchBar from "./SearchBar"
 import ValutaCalc from "./ValutaCalc"
 
 
 const Valuta = ({facade, selectvaluta}) => {
 
     //const [allValutas, setAllValutas] = useState([])
+    const [search, setSearch] = useState("")
     const [allSymbols, setAllSymbols] = useState([])
     const [allIcons, setAllIcons] = useState([{code: '', svg: {}}])
     const getSymbols = (data) => {setAllSymbols(data.all)}
@@ -24,14 +26,21 @@ const Valuta = ({facade, selectvaluta}) => {
         })
        
        // <td>{Math.round((item.value + Number.EPSILON)*100) /100}</td>
+
+
+       const filteredValutas = mergedValutas.filter(val => val.description.toLowerCase().includes(search.toLowerCase()))
         
-        
+    
+       const searchChange = (e) => {
+           setSearch(e.target.value)
+           console.log(search)
+       }
 
     return (
         
            <div className={"nested-list"}>
-
-            {mergedValutas.map((item) => (
+            <SearchBar placeholder={"Søg her"} handleChange={searchChange}/>
+            {filteredValutas.map((item) => (
                 <div className="valuta-list-line"  key={item.code}>
                 {/* <div className="valuta-list-icon">{<img className="svgicon" src={`data:image/svg+xml;utf8,${encodeURIComponent("<svg"+item.svg+"</svg>")}`}></img>}</div> */}
                 {<img className="svgicon" id={item.code} onClick={selectvaluta} src={`https://valutakurser.dk/images/flags/${item.code}.svg`}></img>}
