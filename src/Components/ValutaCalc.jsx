@@ -90,17 +90,9 @@ const ValutaCalc = () => {
             </div>
             <Modal show={showModal} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
+          <Modal.Title>Søg</Modal.Title>
         </Modal.Header>
         <Modal.Body><Valuta facade={facade} selectvaluta={handleSelect}/></Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Save Changes
-          </Button>
-        </Modal.Footer>
       </Modal>
         </div>
     )

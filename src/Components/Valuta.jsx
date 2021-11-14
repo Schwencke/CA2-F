@@ -37,9 +37,10 @@ const Valuta = ({facade, selectvaluta}) => {
        }
 
     return (
-        
+        <div>
+        <SearchBar placeholder={"Søg her"} handleChange={searchChange}/>
            <div className={"nested-list"}>
-            <SearchBar placeholder={"Søg her"} handleChange={searchChange}/>
+            
             {filteredValutas.map((item) => (
                 <div className="valuta-list-line"  key={item.code}>
                 {/* <div className="valuta-list-icon">{<img className="svgicon" src={`data:image/svg+xml;utf8,${encodeURIComponent("<svg"+item.svg+"</svg>")}`}></img>}</div> */}
@@ -48,6 +49,7 @@ const Valuta = ({facade, selectvaluta}) => {
                 <div className="valuta-list-code">{item.code}</div>
                 </div>
              ))}
+       </div>
        </div>
     )
 }
