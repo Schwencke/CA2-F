@@ -1,15 +1,14 @@
-import { useEffect, useState } from "react"
-import {Image, Col} from 'react-bootstrap';
-import Valuta from "./Valuta";
-import ValutaSymbolSelecter from "./ValutaSymbolSelecter";
 
+import ValutaCalc from "./ValutaCalc";
+import ValutaCalcCard from "./ValutaCalcCard";
+import Valuta from "./Valuta";
 
 const Company = ({facade}) => {
    
     return (
         <div>
-          <ValutaSymbolSelecter/>
-            Hello from Company router component
+            
+            <ValutaCalcCard facade={facade}/>
         </div>
     )
 }

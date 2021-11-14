@@ -1,16 +1,42 @@
 import { useState, useEffect } from "react"
 import facade from "../apiFacade"
 import Calcinput from "./Calcinput"
+import Valuta from "./Valuta"
+import ValutaSymbolSelecter from "./ValutaSymbolSelecter"
+import {Modal, Button} from 'react-bootstrap'
 
-const ValutaCalc = ({selcValuta1, selcValuta2}) => {
+const ValutaCalc = () => {
 
     const [val1, setVal1] = useState('')
     const [val2, setVal2] = useState('')
     const [isBase1, setIsbase1] = useState(false)
     const [isBase2, setIsbase2] = useState(false)
+    const [oneActive, setOneActive] = useState(false)
+    const [twoActive, setTwoActive] = useState(false)
     const [calc1, setCalc1] = useState(0)
     const [calc2, setCalc2] = useState(0)
-   
+    const [selectedValuta1, setSelectedValuta1] = useState('DKK')
+    const [selectedValuta2,setSelectedValuta2] = useState('USD')
+    const [showModal, setShowModal] = useState(false)
+
+    const handleClose = () => setShowModal(false)
+    const handleOpen1 = () => {
+        setShowModal(true)
+        setOneActive(true)
+        setTwoActive(false)
+    }
+    const handleOpen2 = () => {
+        setShowModal(true)
+        setTwoActive(true)
+        setOneActive(false)
+    }
+    const handleSelect = (e) => {
+        if(oneActive){setSelectedValuta1(e.target.id)}
+        if(twoActive){setSelectedValuta2(e.target.id)}
+    }
+    
+
+
     const isActiveBase1 = (e) => {
         setIsbase1(true)
         setIsbase2(false)
@@ -39,19 +65,43 @@ const ValutaCalc = ({selcValuta1, selcValuta2}) => {
         //else setVal1(calc2)
     }
 
+
+
     useEffect(()=>{
-        if (isBase2 && val2 !== 0) facade.fetchData('valuta/convert/'+selcValuta2.code+'/'+selcValuta1.code+'/'+val2,getConversion2)
-        else if (isBase1 && val1 !==0) facade.fetchData('valuta/convert/'+selcValuta1.code+'/'+selcValuta2.code+'/'+val1,getConversion1)
+        if (isBase2 && val2 !== 0) facade.fetchData('valuta/convert/'+selectedValuta2+'/'+selectedValuta1+'/'+val2,getConversion2)
+        else if (isBase1 && val1 !==0) facade.fetchData('valuta/convert/'+selectedValuta1+'/'+selectedValuta2+'/'+val1,getConversion1)
         console.log(calc1, calc2, val2)
-    },[isActiveBase2, isActiveBase1])
+    },[isActiveBase2, isActiveBase1, handleSelect])
 
 
 
 
     return (
-        <div>
+        <div className={"calc"}>
+            {console.log(oneActive)}
+            {console.log(twoActive)}
+            <div className={"calc-element"}>
             <Calcinput placeholder={"Skriv beløb.."} handleChange={handleChangeVal1} onKeyDown={isActiveBase1} value={val1}/>
+            <ValutaSymbolSelecter code={selectedValuta1} handleChange={handleOpen1}/>
+            </div>
+            <div className={"calc-element"}>
             <Calcinput placeholder={"Skriv beløb.."} handleChange={handleChangeVal2} onKeyDown={isActiveBase2} value={val2}/>
+            <ValutaSymbolSelecter code={selectedValuta2} handleChange={handleOpen2}/>
+            </div>
+            <Modal show={showModal} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Modal heading</Modal.Title>
+        </Modal.Header>
+        <Modal.Body><Valuta facade={facade} selectvaluta={handleSelect}/></Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          <Button variant="primary" onClick={handleClose}>
+            Save Changes
+          </Button>
+        </Modal.Footer>
+      </Modal>
         </div>
     )
 }

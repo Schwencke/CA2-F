@@ -1,13 +1,10 @@
 import IconButton from './IconButton'
 
-const ValutaSymbolSelecter = () => {
+const ValutaSymbolSelecter = ({code, handleChange}) => {
 
-    const code= "ALL"
-
+   
     return (
-        <div>
-        <IconButton code={code}/>
-        </div>
+        <IconButton code={code} handleChange={handleChange}/>
     )
 }
 
