@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
 
-function Header({facade, loggedIn}) {
+function Header({facade, loggedIn, logout}) {
   return (
     <div>
       <ul className="header">
@@ -23,6 +23,8 @@ function Header({facade, loggedIn}) {
             </NavLink>
           </li>
         )}
+        {(loggedIn)?<button className="logout_button" onClick={logout}>Logout</button>: <div></div>}
+          
       </ul>
     </div>
   );

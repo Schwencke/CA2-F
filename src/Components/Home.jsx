@@ -5,12 +5,7 @@ import LogIn from "../Login";
 const Home = ({loggedIn, login, facade, logout}) => {
     return (
         <div>
-      {!loggedIn ? (<LogIn login={login} facade={facade}/>):
-        (<div>
-          
-          <button onClick={logout}>Logout</button>
-          <p>Role: {facade.getUserRoles()}</p>
-        </div>)}
+      {!loggedIn ?<LogIn login={login} facade={facade}/>: <div>Velkommen til CA2 opgaven</div>}
         </div>
     )
 }

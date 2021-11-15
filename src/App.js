@@ -24,10 +24,10 @@ function App() {
   return (
     <Container>
       <Router>
-        <Header facade={Facade} loggedIn={loggedIn}/>
+        <Header facade={Facade} loggedIn={loggedIn} logout={logout}/>
         <Switch>
           <Route exact path="/">
-          <Home loggedIn={loggedIn} login={login} facade={Facade} logout={logout}
+          <Home loggedIn={loggedIn} login={login} facade={Facade}
           />
           </Route>
           <Route exact path="/Valutaberegner">

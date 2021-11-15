@@ -77,6 +77,30 @@ input::-webkit-inner-spin-button {
 input[type="number"] {
   -moz-appearance: textfield;
 }
+.logout_button {
+  float: right;
+  display: flex;
+  height: 30px;
+  width: 60px;
+  padding: 0;
+  margin: 10px 10px;
+  line-height: 30px;
+  background: #c8c8c8;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  overflow: hidden;
+  font-family: "Quicksand", sans-serif;
+  font-size: 16px;
+  justify-content: center;
+  font-weight: bold;
+  color: #777;
+  cursor: pointer;
+  box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.09);
+}
+.logout_button:hover{
+  color: rgb(255, 255, 255);
+}
 
 .icon_button {
   margin-left: 10px;
