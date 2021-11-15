@@ -8,7 +8,7 @@ const Products = ({facade}) => {
 const options = {style: 'currency', currency: 'DKK'};
 const numberFormat = new Intl.NumberFormat('en-US', options);  
 
-const priceData= []
+const priceData= [[1577836800, 241],[1580515200, 230],[1583020800, 235],[1585699200, 224],[1588291200, 222],[1590969600, 210],[1593561600, 200],[1596240000, 210],[1598918400, 220],[1601510400, 230],[1604188800, 220],[1606780800, 270]]
 
 const configPrice = {
       
@@ -33,7 +33,7 @@ const configPrice = {
   tooltip: {
     shared: true,
     formatter: function () {
-      return numberFormat.format(this.y, 0) +  '</b><br/>' + moment(this.x).format('X')
+      return numberFormat.format(this.y, 0) +  '</b><br/>' + moment(this.x).format("MMMM Do YYYY")
     }
   },
   plotOptions: {
@@ -47,7 +47,7 @@ const configPrice = {
     selected: 1
   },
   title: {
-    text: `Historical data for DKK`
+    text: `Historical data for USD`
   },
   chart: {
     height: 600,

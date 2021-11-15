@@ -33,6 +33,7 @@ const ValutaCalc = () => {
     const handleSelect = (e) => {
         if(oneActive){setSelectedValuta1(e.target.id)}
         if(twoActive){setSelectedValuta2(e.target.id)}
+        setShowModal(false)
     }
     
 

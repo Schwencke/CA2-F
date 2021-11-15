@@ -21,6 +21,15 @@ function App() {
  .then(res =>setLoggedIn(true));
   } 
  
+  useEffect(() => {
+    if (Facade.getToken()!=null){
+      setLoggedIn(true)
+    }
+  }, [])
+
+  
+   
+
   return (
     <Container>
       <Router>
