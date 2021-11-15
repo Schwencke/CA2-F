@@ -23,7 +23,8 @@ function Header({facade, loggedIn, logout}) {
             </NavLink>
           </li>
         )}
-        {(loggedIn)?<button className="logout_button" onClick={logout}>Logout</button>: <div></div>}
+        {/* {(loggedIn)?<button className="logout_button" onClick={logout}>Logout</button>: <div></div>} */}
+        {(loggedIn)?<NavLink activeClassName="active" to="/" className="logout_button" onClick={logout}>Logout</NavLink>: <div></div>}
           
       </ul>
     </div>
