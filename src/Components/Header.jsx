@@ -2,7 +2,7 @@ import { NavLink } from 'react-router-dom';
 
 function Header({facade, loggedIn, logout}) {
   return (
-    <div>
+    <div className="hdiv">
       <ul className="header">
         <li>
           <NavLink exact activeClassName="active" to="/">

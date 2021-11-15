@@ -40,7 +40,13 @@ code {
     monospace;
 }
 
+.hdiv{
+  margin-top: 10px;
+  
+}
+
 ul.header {
+  border-radius: 5px;
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -155,7 +161,7 @@ input[type="number"] {
 }
 
 .calc-card {
-  background-color: rgba(68, 70, 92, 0.2);
+  background-color: rgba(158, 202, 253, 0.2);
   margin: 5% auto;
   display: flex;
   justify-content: center;
