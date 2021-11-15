@@ -33,6 +33,13 @@ const login = (user, password) => {
     setToken(res.token)
   })
 }
+
+const createUser= (user,password) => {
+  const options = makeOptions("POST", true,{username: user, password: password });
+  return fetch(URL + "/api/register/reg", options)
+.then(handleHttpErrors)
+.then(res => {setToken(res.token) })
+}
 // const fetchData = () => {
 //     const options = makeOptions("GET",true); //True add's the token
 //    return fetch(URL + "/api/info/user", options)
@@ -89,6 +96,7 @@ const makeOptions= (method,addToken,body) =>{
      getToken,
      getUserRoles,
      hasUserAccess,
+     createUser,
      loggedIn,
      login,
      logout,

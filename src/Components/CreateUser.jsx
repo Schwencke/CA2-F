@@ -1,11 +1,11 @@
 import { useState } from "react";
-export default function CreateUser({ create }) {
+export default function CreateUser({ facade }) {
     const init = { username: "", password: "" };
     const [credentials, setCredentials] = useState(init);
    
     const createUsr = (evt) => {
       evt.preventDefault();
-      create(credentials.username, credentials.password);
+      facade.createUser(credentials.username, credentials.password);
     }
     const onChange = (evt) => {
       setCredentials({ ...credentials,[evt.target.id]: evt.target.value })
@@ -13,11 +13,10 @@ export default function CreateUser({ create }) {
    
     return (
       <div>
-        <h2>Create User</h2>
         <form onChange={onChange} >
-          <input placeholder="User Name" id="username" />
-          <input placeholder="Password" id="password" />
-          <button onClick={createUsr}>Create</button>
+          <input className="login-input"  placeholder="User Name" id="username" />
+          <input className="login-input"  type="password" placeholder="Password" id="password" />
+          <button className="login-btn" onClick={createUsr}>Create</button>
         </form>
       </div>
     )

@@ -6,8 +6,7 @@ import Valuta from "./Valuta";
 const Company = ({facade}) => {
    
     return (
-        <div>
-            
+        <div className="wrapper">
             <ValutaCalcCard facade={facade}/>
         </div>
     )

@@ -11,8 +11,8 @@ function Header({facade, loggedIn}) {
         </li>
         {facade.hasUserAccess('user', loggedIn) && (
           <li>
-            <NavLink activeClassName="active" to="/company">
-              Company
+            <NavLink activeClassName="active" to="/valutaberegner">
+              Valutaberegner
             </NavLink>
           </li>
         )}

@@ -78,8 +78,7 @@ const ValutaCalc = () => {
 
     return (
         <div className={"calc"}>
-            {console.log(oneActive)}
-            {console.log(twoActive)}
+            <h2 className="calc-heading">Beregn valuta</h2>
             <div className={"calc-element"}>
             <Calcinput placeholder={"Skriv beløb.."} handleChange={handleChangeVal1} onKeyDown={isActiveBase1} value={val1}/>
             <ValutaSymbolSelecter code={selectedValuta1} handleChange={handleOpen1}/>

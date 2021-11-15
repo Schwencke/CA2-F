@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react"
 import SearchBar from "./SearchBar"
-import ValutaCalc from "./ValutaCalc"
 
 
 const Valuta = ({facade, selectvaluta}) => {
@@ -39,7 +38,7 @@ const Valuta = ({facade, selectvaluta}) => {
     return (
         <div>
         <SearchBar placeholder={"Søg her"} handleChange={searchChange}/>
-           <div className={"nested-list"}>
+           <div className="nested-list">
             
             {filteredValutas.map((item) => (
                 <div className="valuta-list-line"  key={item.code}>

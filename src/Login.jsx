@@ -1,8 +1,17 @@
 import { useState } from "react";
-export default function LogIn({ login }) {
+import {Modal} from 'react-bootstrap'
+import CreateUser from './Components/CreateUser'
+export default function LogIn({ login, facade }) {
     const init = { username: "", password: "" };
     const [loginCredentials, setLoginCredentials] = useState(init);
-   
+    const [showModal, setShowModal] = useState(false)
+
+    const handleClose = () => setShowModal(false)
+    const handleOpen = () => {
+        setShowModal(true)
+    }
+
+
     const performLogin = (evt) => {
       evt.preventDefault();
       login(loginCredentials.username, loginCredentials.password);
@@ -12,13 +21,20 @@ export default function LogIn({ login }) {
     }
    
     return (
-      <div>
+      <div className="login-card">
         <h2>Login</h2>
         <form onChange={onChange} >
-          <input placeholder="User Name" id="username" />
-          <input type="password" placeholder="Password" id="password" />
-          <button onClick={performLogin}>Login</button>
+          <input className="login-input" placeholder="User Name" id="username" /> <br />
+          <input className="login-input" type="password" placeholder="Password" id="password" /> <br />
+          <button className="login-btn" onClick={performLogin}>Login</button>
         </form>
+        <button className="register-btn" onClick={handleOpen}>Ikke registeret endnu?</button>
+        <Modal show={showModal} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Opret en bruger</Modal.Title>
+        </Modal.Header>
+        <Modal.Body><CreateUser facade={facade}/></Modal.Body>
+      </Modal>
       </div>
     )
    

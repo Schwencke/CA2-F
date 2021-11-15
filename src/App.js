@@ -1,7 +1,7 @@
 import React, { useState,useEffect } from "react"
 import Facade from "./apiFacade";
 import { BrowserRouter as Router, Switch, Route,} from "react-router-dom";
-import Company from "./Components/Company"
+import Company from "./Components/Valutaberegner"
 import Header from "./Components/Header"
 import Home from "./Components/Home"
 import Products from "./Components/Products"
@@ -30,7 +30,7 @@ function App() {
           <Home loggedIn={loggedIn} login={login} facade={Facade} logout={logout}
           />
           </Route>
-          <Route exact path="/Company">
+          <Route exact path="/Valutaberegner">
             {Facade.hasUserAccess('user', loggedIn) &&
           <Company facade={Facade} // props for company
           />}
